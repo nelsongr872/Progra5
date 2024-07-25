@@ -1,5 +1,5 @@
 //importar clases
-import Enemigo from "../archivosDepreciados/enemie.js";
+import Enemigo from "../class/enemigo.js";
 import Guerrero from "../class/guerrero.js";
 
 //Importar funciones auxiliares
@@ -28,6 +28,8 @@ const warrior = new Guerrero(
   "./../img/Sword.png"
 );
 const enemie1 = new Enemigo(
+  canvas.width / 10.5,
+  canvas.height / 6.5,
   74,
   64,
   keys,

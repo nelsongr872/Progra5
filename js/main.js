@@ -35,12 +35,12 @@ const enemie1 = new Enemigo(
   keys,
   ctx,
   1000,
-  100,
-  1,
+  200,
+  2,
   canvas,
-  "./../img/enemie1.png",
+  "./../img/enemigos/enemigo1.png",
   75,
-  "./../img//enemie1Sword.png",
+  "./../img/enemigos/espada1.png",
   2,
   2
 );

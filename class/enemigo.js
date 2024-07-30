@@ -42,6 +42,9 @@ export default class Enemigos extends Personaje {
     if (this.energia <= 0) {
       return;
     }
+    if (!this.ctx) {
+      return;
+    }
     this.ctx.save();
 
     //dibujar circulo para mecanica de colision

@@ -8,22 +8,38 @@ export const drawBG = (ctx, canvas) => {
 };
 
 //funcion de mecanica de colision
-export const colision = (warrior, enemie1) => {
+export const colision = (jugador, enemigo) => {
   //objetos de la clase Calculardistancias
-  const distancia_je1 = new CalcularDistancias(warrior, enemie1);
+  const distancia_je = new CalcularDistancias(jugador, enemigo);
 
-  // mecanica de colision jugador-enemigo1
-  if (enemie1.energia > 0) {
-    if (distancia_je1.distancia <= distancia_je1.sumaDeRadios) {
+  // mecanica de colision jugador-enemigo teniendo jugador mayor ataque
+  if (enemigo.energia > 0 && jugador.espada > enemigo.espada) {
+    if (distancia_je.distancia <= distancia_je.sumaDeRadios) {
       console.log("colision con el enemigo1");
-      if (enemie1.espada > 0) {
-        enemie1.espada += -warrior.ataque;
+      if (enemigo.espada > 0) {
+        enemigo.espada += -jugador.ataque;
       } else {
-        enemie1.energia += -warrior.ataque;
+        enemigo.energia += -jugador.ataque;
       }
 
-      if (enemie1.energia === 0) {
+      if (enemigo.energia === 0) {
         console.log("mataste al enemigo");
+      }
+    }
+  }
+
+  // mecanica de colision jugador-enemigo teniendo enemigo mayor ataque
+  if (jugador.energia > 0 && enemigo.espada > jugador.espada) {
+    if (distancia_je.distancia <= distancia_je.sumaDeRadios) {
+      console.log("colision con el enemigo");
+      if (jugador.espada > 0) {
+        jugador.espada += -enemigo.ataque;
+      } else {
+        jugador.energia += -enemigo.ataque;
+      }
+
+      if (jugador.energia === 0) {
+        console.log("moriste por el enemigo");
       }
     }
   }

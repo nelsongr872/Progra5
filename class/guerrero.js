@@ -133,22 +133,24 @@ export default class Guerrero extends Personaje {
     );
 
     //dibujar la espada
-    this.ctx.translate(
-      this.position.x + this.w / 2,
-      this.position.y + this.h / 2
-    );
-    this.ctx.rotate(this.rotationAngle);
-    this.ctx.translate(
-      -(this.position.x + this.w),
-      -(this.position.y + this.h)
-    );
-    this.ctx.drawImage(
-      this.swordImage,
-      this.position.x,
-      this.position.y - this.h / 4,
-      this.w / 2,
-      this.h / 2
-    );
+    if (this.espada > 0) {
+      this.ctx.translate(
+        this.position.x + this.w / 2,
+        this.position.y + this.h / 2
+      );
+      this.ctx.rotate(this.rotationAngle);
+      this.ctx.translate(
+        -(this.position.x + this.w),
+        -(this.position.y + this.h)
+      );
+      this.ctx.drawImage(
+        this.swordImage,
+        this.position.x,
+        this.position.y - this.h / 4,
+        this.w / 2,
+        this.h / 2
+      );
+    }
 
     this.ctx.restore();
 

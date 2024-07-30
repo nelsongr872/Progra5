@@ -17,6 +17,8 @@ canvas.height = innerHeight - 4;
 const warrior = new Guerrero(
   74,
   64,
+  70,
+  10,
   keys,
   ctx,
   1000,
@@ -32,6 +34,8 @@ const enemie1 = new Enemigo(
   canvas.height / 6.5,
   74,
   64,
+  70,
+  10,
   keys,
   ctx,
   1000,

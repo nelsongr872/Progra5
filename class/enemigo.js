@@ -6,6 +6,8 @@ export default class Enemigos extends Personaje {
     y,
     w,
     h,
+    wb,
+    hb,
     keys,
     ctx,
     energia,
@@ -21,6 +23,8 @@ export default class Enemigos extends Personaje {
     super(
       w,
       h,
+      wb,
+      hb,
       keys,
       ctx,
       energia,

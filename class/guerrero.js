@@ -4,6 +4,8 @@ export default class Guerrero extends Personaje {
   constructor(
     w,
     h,
+    wb,
+    hb,
     keys,
     ctx,
     energia,
@@ -17,6 +19,8 @@ export default class Guerrero extends Personaje {
     super(
       w,
       h,
+      wb,
+      hb,
       keys,
       ctx,
       energia,
@@ -132,6 +136,16 @@ export default class Guerrero extends Personaje {
       this.h
     );
 
+    //dibujar el bono de vida
+    this.ctx.drawImage(
+      this.bonoImage,
+      this.position.x + 6,
+      this.position.y - 20,
+      this.wb,
+      this.hb
+    );
+
+    console.log(this.bonoUrl);
     //dibujar la espada
     if (this.espada > 0) {
       this.ctx.translate(

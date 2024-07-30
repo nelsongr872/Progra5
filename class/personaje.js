@@ -62,7 +62,6 @@ export default class Personaje {
     } else {
       this.bonoUrl = "./../img/bono/Bono0.png";
     }
-
     this.bonoImage = new Image();
     this.bonoImage.src = this.bonoUrl;
     this.bonoImage.onload = this.draw.bind(this);

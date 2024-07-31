@@ -37,36 +37,48 @@ export default class Personaje {
     this.swordImage = new Image();
     this.swordImage.src = swordUrl;
     this.swordImage.onload = this.draw.bind(this);
+    this.actualizarBonoImage();
 
-    //cargar imagen del bono de vida
-    if (energia == 1000) {
+    console.log(this.bonoImage);
+    this.rotationAngle = 0; //angulo de rotacion de espada
+  }
+
+  actualizarBonoImage() {
+    if (this.energia == 1000) {
       this.bonoUrl = "./../img/bono/Bono10.png";
-    } else if (energia >= 900 && energia < 1000) {
+    } else if (this.energia >= 900 && this.energia < 1000) {
       this.bonoUrl = "./../img/bono/Bono9.png";
-    } else if (energia >= 800 && energia < 900) {
+    } else if (this.energia >= 800 && this.energia < 900) {
       this.bonoUrl = "./../img/bono/Bono8.png";
-    } else if (energia >= 700 && energia < 800) {
+    } else if (this.energia >= 700 && this.energia < 800) {
       this.bonoUrl = "./../img/bono/Bono7.png";
-    } else if (energia >= 600 && energia < 700) {
+    } else if (this.energia >= 600 && this.energia < 700) {
       this.bonoUrl = "./../img/bono/Bono6.png";
-    } else if (energia >= 500 && energia < 600) {
+    } else if (this.energia >= 500 && this.energia < 600) {
       this.bonoUrl = "./../img/bono/Bono5.png";
-    } else if (energia >= 400 && energia < 500) {
+    } else if (this.energia >= 400 && this.energia < 500) {
       this.bonoUrl = "./../img/bono/Bono4.png";
-    } else if (energia >= 300 && energia < 400) {
+    } else if (this.energia >= 300 && this.energia < 400) {
       this.bonoUrl = "./../img/bono/Bono3.png";
-    } else if (energia >= 200 && energia < 300) {
+    } else if (this.energia >= 200 && this.energia < 300) {
       this.bonoUrl = "./../img/bono/Bono2.png";
-    } else if (energia >= 100 && energia < 200) {
+    } else if (this.energia >= 100 && this.energia < 200) {
       this.bonoUrl = "./../img/bono/Bono1.png";
     } else {
       this.bonoUrl = "./../img/bono/Bono0.png";
     }
+
     this.bonoImage = new Image();
     this.bonoImage.src = this.bonoUrl;
     this.bonoImage.onload = this.draw.bind(this);
+  }
 
-    console.log(this.bonoImage);
-    this.rotationAngle = 0; //angulo de rotacion de espada
+  set energia(value) {
+    this._energia = value;
+    this.actualizarBonoImage(); // Actualiza la imagen del bono de vida
+  }
+
+  get energia() {
+    return this._energia;
   }
 }

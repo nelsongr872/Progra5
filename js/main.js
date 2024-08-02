@@ -1,12 +1,16 @@
 //importar clases
 import Enemigo from "../class/enemigo.js";
 import Guerrero from "../class/guerrero.js";
+import Bono from "../class/bono.js";
 
 //Importar funciones auxiliares
 import { drawBG, colision } from "../function/funcionesAux.js";
 
 //Importar constantes
 import { ctx, canvas, keys } from "../constants/constants.js";
+
+//importar variables
+import { nivel } from "../variables/variables.js";
 
 //Agregar el elemento canvas al html y definir los atributos de ancho y alto
 document.body.appendChild(canvas);
@@ -49,6 +53,19 @@ const enemie1 = new Enemigo(
   2
 );
 
+// Crear lista de bonos con posiciones correctas
+const bonusList = [
+  new Bono(
+    enemie1.position.x / 2,
+    enemie1.position.y,
+    75,
+    75,
+    "./../img/bono/bono13.png",
+    "espada",
+    30
+  ),
+];
+
 //Disparador
 const update = () => {
   //
@@ -57,7 +74,7 @@ const update = () => {
   drawBG(ctx, canvas);
   warrior.update();
   enemie1.update();
-  colision(warrior, enemie1);
+  colision(warrior, enemie1, bonusList);
   //
   requestAnimationFrame(update);
 };

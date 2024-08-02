@@ -72,6 +72,15 @@ export default class Enemigos extends Personaje {
       this.h
     );
 
+    //dibujar el bono de vida
+    this.ctx.drawImage(
+      this.bonoImage,
+      this.position.x + 6,
+      this.position.y - 20,
+      this.wb,
+      this.hb
+    );
+
     //dibujar la espada
     if (this.espada > 0) {
       this.ctx.translate(

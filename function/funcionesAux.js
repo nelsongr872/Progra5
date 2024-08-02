@@ -8,7 +8,7 @@ export const drawBG = (ctx, canvas) => {
 };
 
 //funcion de mecanica de colision
-export const colision = (jugador, enemigo) => {
+export const colision = (jugador, enemigo, bonos, portales) => {
   //objetos de la clase Calculardistancias
   const distancia_je = new CalcularDistancias(jugador, enemigo);
 
@@ -43,4 +43,37 @@ export const colision = (jugador, enemigo) => {
       }
     }
   }
+  // mecanica de colisión entre jugador y bonos
+  bonos.forEach((bono) => {
+    const distancia_jb = new CalcularDistancias(jugador, bono);
+
+    if (distancia_jb.distancia <= distancia_jb.sumaDeRadios) {
+      console.log("colision con el bono");
+      if (bono.bonoTipo === "espada") {
+        jugador.espada += 150;
+        jugador.ataque += 3;
+        console.log(jugador);
+      }
+      // Eliminar el bono después de ser recogido
+      bono.position.x = -1000; // Mueve el bono fuera del canvas
+      bono.position.y = -1000;
+    }
+  });
+
+  //mecanica de colision entre jugador y portal
+  portales.forEach((portal) => {
+    const distancia_jp = new CalcularDistancias(jugador, portal);
+
+    if (distancia_jp.distancia <= distancia_jp.sumaDeRadios) {
+      if (portal.nivel == 1) {
+        //ir a hacia el nivel dos
+      } else if (portal.numero == 2) {
+        //ir hacia el nivel uno
+      } else if (portal.numero == 3) {
+        //ir hacia el nivel tres
+      } else if (portal.numero == 4) {
+        //ir hacia el nivel dos
+      }
+    }
+  });
 };

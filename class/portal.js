@@ -1,21 +1,19 @@
-// bono.js
-export default class Bono {
-  constructor(x, y, w, h, imageUrl, bonoTipo, radius) {
+export default class Portal {
+  constructor(x, y, w, h, radius, numero) {
     this.position = { x, y };
     this.w = w;
     this.h = h;
     this.radius = radius;
-    this.bonoTipo = bonoTipo;
+    this.numero = numero;
 
     this.image = new Image();
-    this.image.src = imageUrl;
+    this.image.src = "./../img/portal/portal.png";
 
     this.imageLoaded = false;
     this.image.onload = () => {
       this.imageLoaded = true;
     };
   }
-
   draw(ctx) {
     if (this.imageLoaded) {
       // Dibuja la imagen del bono

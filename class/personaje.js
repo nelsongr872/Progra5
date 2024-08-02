@@ -39,7 +39,6 @@ export default class Personaje {
     this.swordImage.onload = this.draw.bind(this);
     this.actualizarBonoImage();
 
-    console.log(this.bonoImage);
     this.rotationAngle = 0; //angulo de rotacion de espada
   }
 

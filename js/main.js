@@ -2,6 +2,7 @@
 import Enemigo from "../class/enemigo.js";
 import Guerrero from "../class/guerrero.js";
 import Bono from "../class/bono.js";
+import Portal from "../class/portal.js";
 
 //Importar funciones auxiliares
 import { drawBG, colision } from "../function/funcionesAux.js";
@@ -52,12 +53,29 @@ const enemie1 = new Enemigo(
   2,
   2
 );
-
-// Crear lista de bonos con posiciones correctas
+const enemie5 = new Enemigo(
+  canvas.width / 10.5,
+  canvas.height / 6.5,
+  74,
+  64,
+  70,
+  10,
+  keys,
+  ctx,
+  1000,
+  200,
+  2,
+  canvas,
+  "./../img/enemigos/enemigo5.png",
+  75,
+  "./../img/enemigos/espada5.png",
+  2,
+  2
+);
 const bonusList = [
   new Bono(
-    enemie1.position.x / 2,
-    enemie1.position.y,
+    warrior.position.x,
+    enemie1.position.y + 100,
     75,
     75,
     "./../img/bono/bono13.png",
@@ -65,16 +83,54 @@ const bonusList = [
     30
   ),
 ];
-
+const portales = [
+  new Portal(
+    warrior.position.x - 50,
+    enemie1.position.y - 100,
+    150,
+    150,
+    50,
+    1
+  ),
+  new Portal(
+    warrior.position.x - 50,
+    enemie1.position.y + 400,
+    150,
+    150,
+    50,
+    2
+  ),
+];
 //Disparador
-const update = () => {
+export const update = () => {
   //
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   //
-  drawBG(ctx, canvas);
-  warrior.update();
-  enemie1.update();
-  colision(warrior, enemie1, bonusList);
+
+  if (nivel == 1) {
+    drawBG(ctx, canvas, "#1f5705");
+    warrior.update();
+    enemie1.update();
+    bonusList.forEach((bono) => bono.draw(ctx));
+    portales.forEach((portal) => {
+      if (portal.numero == 1) {
+        portal.draw(ctx);
+      }
+    });
+    colision(warrior, enemie1, bonusList, portales);
+  } else if (nivel == 2) {
+    drawBG(ctx, canvas, "#323232");
+    console.log("estoy dentro del nivel 2 update");
+    warrior.update();
+    enemie5.update();
+    bonusList.forEach((bono) => bono.draw(ctx));
+    portales.forEach((portal) => {
+      if (portal.numero == 1) {
+        portal.draw(ctx);
+      }
+    });
+    colision(warrior, enemie5, bonusList, portales);
+  }
   //
   requestAnimationFrame(update);
 };

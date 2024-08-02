@@ -81,6 +81,15 @@ export default class Enemigos extends Personaje {
       this.hb
     );
 
+    //dibujar fuerza de ataque
+    this.ctx.fillStyle = "white";
+    this.ctx.font = "20px serif";
+    this.ctx.fillText(
+      `${this.ataque}`,
+      this.position.x + 37,
+      this.position.y + 80
+    );
+
     //dibujar la espada
     if (this.espada > 0) {
       this.ctx.translate(

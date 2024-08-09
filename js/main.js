@@ -17,8 +17,9 @@ import { gameState } from "../variables/variables.js";
 
 //Agregar el elemento canvas al html y definir los atributos de ancho y alto
 document.body.appendChild(canvas);
-canvas.width = innerWidth - 4;
-canvas.height = innerHeight - 4;
+canvas.width = 480;
+canvas.height = 640;
+canvas.margin = 20;
 
 //Instancias
 const warrior = new Guerrero(
@@ -32,15 +33,15 @@ const warrior = new Guerrero(
   100,
   1,
   canvas,
-  "./../img/Warrior.png",
+  "./img/warrior.png",
   75,
-  "./../img/Sword.png"
+  "./img/Sword.png"
 );
 //array de enemigos segun su nivel
 let enemigoNivel1 = [
   new Enemigo(
-    canvas.width / 10.5,
-    canvas.height / 6.5,
+    40,
+    60,
     74,
     64,
     70,
@@ -51,17 +52,113 @@ let enemigoNivel1 = [
     200,
     2,
     canvas,
-    "./../img/enemigos/enemigo1.png",
+    "./img/enemigos/enemigo1.png",
     75,
-    "./../img/enemigos/espada1.png",
+    "./img/enemigos/espada1.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 74,
+    74,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    200,
+    2,
+    canvas,
+    "./img/enemigos/enemigo2.png",
+    75,
+    "./img/enemigos/espada2.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    60,
+    canvas.height - 100,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    200,
+    2,
+    canvas,
+    "./img/enemigos/enemigo1.png",
+    75,
+    "./img/enemigos/espada1.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 76,
+    canvas.height - 64,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    200,
+    2,
+    canvas,
+    "./img/enemigos/enemigo2.png",
+    75,
+    "./img/enemigos/espada2.png",
     2,
     2
   ),
 ];
+
 let enemigoNivel2 = [
   new Enemigo(
-    canvas.width / 10.5,
-    canvas.height / 6.5,
+    40,
+    60,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    300,
+    3,
+    canvas,
+    "./img/enemigos/enemigo5.png",
+    75,
+    "./img/enemigos/espada5.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 74,
+    74,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    300,
+    3,
+    canvas,
+    "./img/enemigos/enemigo3.png",
+    75,
+    "./img/enemigos/espada3.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    60,
+    canvas.height - 100,
     74,
     64,
     70,
@@ -72,77 +169,123 @@ let enemigoNivel2 = [
     200,
     2,
     canvas,
-    "./../img/enemigos/enemigo5.png",
+    "./img/enemigos/enemigo1.png",
     75,
-    "./../img/enemigos/espada5.png",
+    "./img/enemigos/espada1.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 76,
+    canvas.height - 64,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1000,
+    200,
+    2,
+    canvas,
+    "./img/enemigos/enemigo2.png",
+    75,
+    "./img/enemigos/espada2.png",
     2,
     2
   ),
 ];
-let enemigoNivel3 = [];
+let enemigoNivel3 = [
+  new Enemigo(
+    40,
+    60,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1800,
+    800,
+    8,
+    canvas,
+    "./img/enemigos/enemigo10.png",
+    75,
+    "./img/enemigos/espada10.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 74,
+    74,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    1800,
+    800,
+    8,
+    canvas,
+    "./img/enemigos/enemigo9.png",
+    75,
+    "./img/enemigos/espada9.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    60,
+    canvas.height - 100,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    2000,
+    850,
+    9,
+    canvas,
+    "./img/enemigos/enemigo7.png",
+    75,
+    "./img/enemigos/espada7.png",
+    2,
+    2
+  ),
+  new Enemigo(
+    canvas.width - 76,
+    canvas.height - 64,
+    74,
+    64,
+    70,
+    10,
+    keys,
+    ctx,
+    2000,
+    850,
+    9,
+    canvas,
+    "./img/enemigos/enemigo12.png",
+    75,
+    "./img/enemigos/espada12.png",
+    2,
+    2
+  ),
+];
 
-//array de bonos segun su nivel
-let bonusNivel1 = [
-  new Bono(
-    warrior.position.x,
-    enemigoNivel1[0].position.y + 100,
-    75,
-    75,
-    "./../img/bono/bono13.png",
-    "espada",
-    30
-  ),
-];
-let bonusNivel2 = [
-  new Bono(
-    warrior.position.x,
-    enemigoNivel1[0].position.y + 100,
-    75,
-    75,
-    "./../img/bono/bono13.png",
-    "espada",
-    30
-  ),
-];
-let bonusNivel3 = [
-  new Bono(
-    warrior.position.x,
-    enemigoNivel1[0].position.y + 100,
-    75,
-    75,
-    "./../img/bono/bono13.png",
-    "espada",
-    30
-  ),
-];
+// array de portales según su nivel
+let portalesNivel1 = [new Portal(canvas.width / 2 - 75, 0, 150, 150, 50, 1)];
 
-//array de portales segun su nivel
-let portalesNivel1 = [
-  new Portal(
-    warrior.position.x - 50,
-    enemigoNivel1[0].position.y - 100,
-    150,
-    150,
-    50,
-    1
-  ),
-];
 let portalesNivel2 = [
+  new Portal(canvas.width / 2 - 75, 0, 150, 150, 50, 2),
   new Portal(
     warrior.position.x - 50,
     enemigoNivel1[0].position.y + 400,
     150,
     150,
     50,
-    2
-  ),
-  new Portal(
-    warrior.position.x - 50,
-    enemigoNivel1[0].position.y + 400,
-    150,
-    150,
-    50,
-    2
+    3
   ),
 ];
 let portalesNivel3 = [
@@ -155,6 +298,43 @@ let portalesNivel3 = [
     1
   ),
 ];
+
+//array de bonos segun su nivel
+let bonusNivel1 = [
+  new Bono(
+    warrior.position.x,
+    portalesNivel1[0].position.y + 450,
+    75,
+    75,
+    "./img/bono/bono13.png",
+    "espada",
+    30
+  ),
+];
+console.log(bonusNivel1);
+let bonusNivel2 = [
+  new Bono(
+    warrior.position.x,
+    enemigoNivel1[0].position.y + 100,
+    75,
+    75,
+    "./img/bono/bono13.png",
+    "espada",
+    30
+  ),
+];
+let bonusNivel3 = [
+  new Bono(
+    warrior.position.x,
+    portalesNivel1[0].position.y + 450,
+    75,
+    75,
+    "./img/bono/bono13.png",
+    "espada",
+    30
+  ),
+];
+
 let nivelAnterior = gameState.nivel;
 
 let enemigosNivel1R = enemigoNivel1;
@@ -170,6 +350,7 @@ let bonusNivel3R = bonusNivel3;
 let portalesNivel3R = portalesNivel3;
 //Disparador
 export const update = () => {
+  if (!gameState.juegoEnProgreso) return;
   //
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   console.log(enemigoNivel1);
@@ -248,5 +429,7 @@ addEventListener("keydown", (e) => {
   keys[e.key] = true;
 });
 addEventListener("keyup", (e) => (keys[e.key] = false));
+// Inicializar el estado del juego
+gameState.juegoEnProgreso = true;
 
 update();

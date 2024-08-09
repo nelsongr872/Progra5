@@ -1,4 +1,4 @@
-## Universidad Nueva Esparta, Nelson Gonzalez - 26838995 y Andrea Muchacho - 31131098
+## Universidad Nueva Esparta, Nelson Gonzalez  y Andrea Muchacho.
 
 ## Proyecto de Programacion V
 
